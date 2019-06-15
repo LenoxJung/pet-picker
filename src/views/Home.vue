@@ -1,8 +1,9 @@
 <template>
   <div class="home-view-container">
     <h1>Adopt a new best friend.</h1>
-    {{ getAllCats.length }}
-    {{ animalsCount }}
+    {{ getAllCats.length }} cats |
+    {{ getAllDogs.length }} dogs |
+    {{ animalsCount }} animals
 
     <button @click="togglePetForm" class="btn btn-primary">Add New Pet</button>
 
@@ -57,7 +58,8 @@ export default {
   computed: {
     ...mapGetters([
       'animalsCount',
-      'getAllCats'
+      'getAllCats',
+      'getAllDogs'
     ])
   },
   methods: {
@@ -73,6 +75,7 @@ export default {
         species,
         pet: {
           name,
+          species: species.substring(0, species.length - 1),
           age
         }
       }
